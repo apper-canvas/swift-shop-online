@@ -1,7 +1,7 @@
 import { useCart } from "@/hooks/useCart";
 import React, { useState, useEffect } from "react";
 import ProductGrid from "@/components/organisms/ProductGrid";
-import FilterBar from "@/components/organisms/FilterBar";
+import FilterBar from "@/components/molecules/FilterBar";
 
 const Homepage = () => {
   const { addToCart } = useCart();
