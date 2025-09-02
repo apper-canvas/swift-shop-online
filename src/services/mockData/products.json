@@ -1,0 +1,110 @@
+[
+  {
+    "Id": 1,
+    "title": "Wireless Bluetooth Headphones",
+    "price": 79.99,
+    "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=300&fit=crop&auto=format",
+    "category": "Electronics",
+    "inStock": true,
+    "description": "Premium wireless headphones with noise cancellation"
+  },
+  {
+    "Id": 2,
+    "title": "Smart Watch Series 7",
+    "price": 299.99,
+    "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=300&fit=crop&auto=format",
+    "category": "Electronics",
+    "inStock": true,
+    "description": "Advanced fitness tracking and health monitoring"
+  },
+  {
+    "Id": 3,
+    "title": "Organic Cotton T-Shirt",
+    "price": 24.99,
+    "image": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=300&fit=crop&auto=format",
+    "category": "Clothing",
+    "inStock": true,
+    "description": "Comfortable and sustainable everyday wear"
+  },
+  {
+    "Id": 4,
+    "title": "Stainless Steel Water Bottle",
+    "price": 34.99,
+    "image": "https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=400&h=300&fit=crop&auto=format",
+    "category": "Lifestyle",
+    "inStock": true,
+    "description": "Insulated bottle keeps drinks cold for 24 hours"
+  },
+  {
+    "Id": 5,
+    "title": "Premium Coffee Beans",
+    "price": 18.99,
+    "image": "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=400&h=300&fit=crop&auto=format",
+    "category": "Food",
+    "inStock": true,
+    "description": "Single-origin Ethiopian coffee beans"
+  },
+  {
+    "Id": 6,
+    "title": "Minimalist Desk Lamp",
+    "price": 89.99,
+    "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop&auto=format",
+    "category": "Home",
+    "inStock": true,
+    "description": "Adjustable LED desk lamp with USB charging"
+  },
+  {
+    "Id": 7,
+    "title": "Yoga Mat Pro",
+    "price": 49.99,
+    "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&h=300&fit=crop&auto=format",
+    "category": "Fitness",
+    "inStock": false,
+    "description": "Non-slip premium yoga mat with alignment guides"
+  },
+  {
+    "Id": 8,
+    "title": "Leather Crossbody Bag",
+    "price": 129.99,
+    "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=300&fit=crop&auto=format",
+    "category": "Accessories",
+    "inStock": true,
+    "description": "Handcrafted genuine leather bag with multiple compartments"
+  },
+  {
+    "Id": 9,
+    "title": "Wireless Phone Charger",
+    "price": 39.99,
+    "image": "https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=400&h=300&fit=crop&auto=format",
+    "category": "Electronics",
+    "inStock": true,
+    "description": "Fast wireless charging pad compatible with all Qi devices"
+  },
+  {
+    "Id": 10,
+    "title": "Indoor Plant Trio",
+    "price": 59.99,
+    "image": "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=400&h=300&fit=crop&auto=format",
+    "category": "Home",
+    "inStock": true,
+    "description": "Low-maintenance plants perfect for any living space"
+  },
+  {
+    "Id": 11,
+    "title": "Athletic Running Shoes",
+    "price": 119.99,
+    "image": "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=400&h=300&fit=crop&auto=format",
+    "category": "Footwear",
+    "inStock": true,
+    "description": "Lightweight running shoes with advanced cushioning"
+  },
+  {
+    "Id": 12,
+    "title": "Artisan Notebook Set",
+    "price": 29.99,
+    "image": "https://images.unsplash.com/photo-1544816150-4832a5a1c2b7?w=400&h=300&fit=crop&auto=format",
+    "category": "Stationery",
+    "inStock": true,
+    "description": "Set of 3 handcrafted notebooks with dotted pages"
+  }
+]
