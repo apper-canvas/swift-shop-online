@@ -1,6 +1,9 @@
 import { useCart } from "@/hooks/useCart";
 import React, { useState } from "react";
 import Header from "@/components/organisms/Header";
+import { useContext } from 'react';
+import { AuthContext } from '../../App';
+import Button from '@/components/atoms/Button';
 import CartDrawer from "@/components/organisms/CartDrawer";
 
 const Layout = ({ children }) => {
@@ -20,8 +23,14 @@ const Layout = ({ children }) => {
   const [selectedCategory, setSelectedCategory] = useState("");
 
   const handleSearch = (query) => {
-    setSearchQuery(query);
+setSearchQuery(query);
     console.log("Searching for:", query);
+  };
+
+  const { logout } = useContext(AuthContext);
+
+  const handleLogout = async () => {
+    await logout();
   };
 
   return (
