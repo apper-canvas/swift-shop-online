@@ -8,10 +8,37 @@ function App() {
     <Router>
       <div className="min-h-screen bg-background">
         <Layout>
-          <Routes>
-            <Route path="/" element={<Homepage />} />
-            <Route path="/products" element={<Homepage />} />
-            <Route path="/categories" element={<Homepage />} />
+<Routes>
+            <Route path="/" element={
+              <Layout>
+                {({ searchQuery, selectedCategory }) => (
+                  <Homepage 
+                    searchQuery={searchQuery} 
+                    selectedCategory={selectedCategory}
+                  />
+                )}
+              </Layout>
+            } />
+            <Route path="/products" element={
+              <Layout>
+                {({ searchQuery, selectedCategory }) => (
+                  <Homepage 
+                    searchQuery={searchQuery} 
+                    selectedCategory={selectedCategory}
+                  />
+                )}
+              </Layout>
+            } />
+            <Route path="/categories" element={
+              <Layout>
+                {({ searchQuery, selectedCategory }) => (
+                  <Homepage 
+                    searchQuery={searchQuery} 
+                    selectedCategory={selectedCategory}
+                  />
+                )}
+              </Layout>
+            } />
           </Routes>
         </Layout>
         <ToastContainer

@@ -59,12 +59,15 @@ const ProductGrid = ({ onAddToCart }) => {
         animate="visible"
         variants={containerVariants}
       >
-        <div className="text-center mb-8">
+<div className="text-center mb-8">
           <h2 className="text-3xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-4">
-            Featured Products
+            {products.length === 12 ? 'Featured Products' : `Found ${products.length} Product${products.length !== 1 ? 's' : ''}`}
           </h2>
           <p className="text-slate-600 max-w-2xl mx-auto">
-            Discover our carefully curated selection of premium products designed to enhance your lifestyle.
+            {products.length === 12 
+              ? 'Discover our carefully curated selection of premium products designed to enhance your lifestyle.'
+              : 'Discover products that match your search and filter criteria.'
+            }
           </p>
         </div>
 

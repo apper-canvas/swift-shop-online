@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ApperIcon from "@/components/ApperIcon";
 import Input from "@/components/atoms/Input";
 
@@ -13,8 +13,28 @@ const SearchBar = ({ onSearch, placeholder = "Search products..." }) => {
   };
 
   const handleChange = (e) => {
-    setQuery(e.target.value);
+    const value = e.target.value;
+    setQuery(value);
+    
+    // Debounced search - call onSearch after user stops typing
+    if (onSearch) {
+      const timeoutId = setTimeout(() => {
+        onSearch(value.trim());
+      }, 300);
+      
+      return () => clearTimeout(timeoutId);
+    }
   };
+
+  useEffect(() => {
+    if (onSearch) {
+      const timeoutId = setTimeout(() => {
+        onSearch(query.trim());
+      }, 300);
+      
+      return () => clearTimeout(timeoutId);
+    }
+  }, [query, onSearch]);
 
   return (
     <form onSubmit={handleSubmit} className="relative flex-1 max-w-md">

@@ -37,7 +37,7 @@ class ProductService {
     ).map(p => ({ ...p }));
   }
 
-  async getFeaturedProducts(limit = 12) {
+async getFeaturedProducts(limit = 12) {
     await this.delay();
     return this.products.slice(0, limit).map(p => ({ ...p }));
   }
@@ -46,6 +46,54 @@ class ProductService {
     await this.delay();
     const categories = [...new Set(this.products.map(p => p.category))];
     return categories.sort();
+  }
+
+  async filterProducts({ searchQuery, category, sortBy, priceRange }) {
+    await this.delay();
+    
+    let filtered = [...this.products];
+
+    // Apply search filter
+    if (searchQuery && searchQuery.trim()) {
+      const query = searchQuery.toLowerCase().trim();
+      filtered = filtered.filter(p => 
+        p.title.toLowerCase().includes(query) ||
+        p.category.toLowerCase().includes(query) ||
+        p.description.toLowerCase().includes(query)
+      );
+    }
+
+    // Apply category filter
+    if (category && category.trim()) {
+      filtered = filtered.filter(p => p.category === category);
+    }
+
+    // Apply price range filter
+    if (priceRange && (priceRange.min > 0 || priceRange.max < 500)) {
+      filtered = filtered.filter(p => 
+        p.price >= priceRange.min && p.price <= priceRange.max
+      );
+    }
+
+    // Apply sorting
+    switch (sortBy) {
+      case 'price-low':
+        filtered.sort((a, b) => a.price - b.price);
+        break;
+      case 'price-high':
+        filtered.sort((a, b) => b.price - a.price);
+        break;
+      case 'newest':
+        // Simulate newest by Id (higher Id = newer)
+        filtered.sort((a, b) => b.Id - a.Id);
+        break;
+      case 'popular':
+      default:
+        // Keep original order for "popular" (or shuffle for realism)
+        break;
+    }
+
+    return filtered.map(p => ({ ...p }));
   }
 }
 

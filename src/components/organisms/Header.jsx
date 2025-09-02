@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
+import React from "react";
 import ApperIcon from "@/components/ApperIcon";
-import SearchBar from "@/components/molecules/SearchBar";
 import CartButton from "@/components/molecules/CartButton";
+import SearchBar from "@/components/molecules/SearchBar";
 
 const Header = ({ cartItemCount, onCartClick, onSearch }) => {
   return (
@@ -23,7 +24,7 @@ const Header = ({ cartItemCount, onCartClick, onSearch }) => {
             </motion.div>
           </div>
 
-          {/* Navigation */}
+{/* Navigation */}
           <nav className="hidden md:flex items-center gap-6">
             <a
               href="/"
@@ -36,12 +37,6 @@ const Header = ({ cartItemCount, onCartClick, onSearch }) => {
               className="text-slate-600 hover:text-accent transition-colors duration-200 font-medium"
             >
               Products
-            </a>
-            <a
-              href="/categories"
-              className="text-slate-600 hover:text-accent transition-colors duration-200 font-medium"
-            >
-              Categories
             </a>
           </nav>
 

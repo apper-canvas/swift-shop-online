@@ -1,6 +1,7 @@
+import { useCart } from "@/hooks/useCart";
+import React from "react";
 import Header from "@/components/organisms/Header";
 import CartDrawer from "@/components/organisms/CartDrawer";
-import { useCart } from "@/hooks/useCart";
 
 const Layout = ({ children }) => {
   const {
@@ -27,8 +28,7 @@ const Layout = ({ children }) => {
         onCartClick={openCart}
         onSearch={handleSearch}
       />
-
-      <main className="flex-1">
+<main className="flex-1">
         {children}
       </main>
 

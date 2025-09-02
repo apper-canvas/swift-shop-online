@@ -1,8 +1,47 @@
-import ProductGrid from "@/components/organisms/ProductGrid";
 import { useCart } from "@/hooks/useCart";
+import React, { useState, useEffect } from "react";
+import ProductGrid from "@/components/organisms/ProductGrid";
+import FilterBar from "@/components/organisms/FilterBar";
 
 const Homepage = () => {
   const { addToCart } = useCart();
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [sortBy, setSortBy] = useState('name');
+  const [priceRange, setPriceRange] = useState([0, 1000]);
+  
+  const loadProducts = async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      // Mock API call - replace with actual API endpoint
+      const response = await fetch('/api/products');
+      if (!response.ok) {
+        throw new Error('Failed to fetch products');
+      }
+      const data = await response.json();
+      setProducts(data || []);
+    } catch (err) {
+      console.error('Error loading products:', err);
+      setError(err.message || 'Failed to load products');
+      setProducts([]);
+    } finally {
+      setLoading(false);
+    }
+  };
+  
+  const handleClearFilters = () => {
+    setSortBy('name');
+    setPriceRange([0, 1000]);
+  };
+  
+  const activeFiltersCount = (sortBy !== 'name' ? 1 : 0) + 
+    (priceRange[0] !== 0 || priceRange[1] !== 1000 ? 1 : 0);
+  
+  useEffect(() => {
+    loadProducts();
+  }, []);
 
   return (
     <div className="min-h-screen">
@@ -28,8 +67,26 @@ const Homepage = () => {
         </div>
       </section>
 
+{/* Filter Bar */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <FilterBar
+          sortBy={sortBy}
+          priceRange={priceRange}
+          onSortChange={setSortBy}
+          onPriceRangeChange={setPriceRange}
+          onClearFilters={handleClearFilters}
+          activeFiltersCount={activeFiltersCount}
+        />
+      </div>
+
       {/* Products Section */}
-      <ProductGrid onAddToCart={addToCart} />
+      <ProductGrid 
+        onAddToCart={addToCart}
+        products={products}
+        loading={loading}
+        error={error}
+        onRetry={loadProducts}
+      />
 
       {/* Footer */}
       <footer className="bg-primary text-white py-12">
