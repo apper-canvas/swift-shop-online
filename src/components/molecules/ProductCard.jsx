@@ -1,24 +1,30 @@
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import Button from "@/components/atoms/Button";
 import Badge from "@/components/atoms/Badge";
-
 const ProductCard = ({ product, onAddToCart }) => {
+  const navigate = useNavigate();
+  
   const handleAddToCart = () => {
     if (product.inStock && onAddToCart) {
       onAddToCart(product);
     }
-  };
+};
 
+  const handleCardClick = () => {
+    navigate(`/products/${product.Id}`);
+  };
   return (
-    <motion.div
+<motion.div
       whileHover={{ y: -2 }}
-      className="card overflow-hidden h-full flex flex-col"
+      className="card overflow-hidden h-full flex flex-col cursor-pointer"
+      onClick={handleCardClick}
     >
-      <div className="relative">
+<div className="relative">
         <img
           src={product.image}
           alt={product.title}
-          className="w-full h-48 object-cover"
+          className="w-full h-48 object-cover transition-transform duration-300 hover:scale-105"
           loading="lazy"
         />
         {!product.inStock && (
@@ -32,7 +38,7 @@ const ProductCard = ({ product, onAddToCart }) => {
 
       <div className="p-4 flex-1 flex flex-col">
         <div className="flex-1">
-          <h3 className="font-semibold text-slate-800 mb-2 line-clamp-2">
+<h3 className="font-semibold text-slate-800 mb-2 line-clamp-2 hover:text-accent transition-colors">
             {product.title}
           </h3>
           <p className="text-slate-600 text-sm mb-3 line-clamp-2">

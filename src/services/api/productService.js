@@ -42,6 +42,29 @@ async getFeaturedProducts(limit = 12) {
     return this.products.slice(0, limit).map(p => ({ ...p }));
   }
 
+  async getProductVariants(id) {
+    await this.delay();
+    const product = this.products.find(p => p.Id === parseInt(id));
+    if (!product) return null;
+    
+    // Mock variant data - in real app this would come from database
+    return {
+      sizes: ["S", "M", "L", "XL"],
+      colors: [
+        { name: "Black", value: "#000000" },
+        { name: "Navy", value: "#1e3a8a" },
+        { name: "Gray", value: "#6b7280" },
+        { name: "White", value: "#ffffff" }
+      ],
+      images: [
+        product.image,
+        product.image,
+        product.image,
+        product.image
+      ]
+    };
+  }
+
   async getCategories() {
     await this.delay();
     const categories = [...new Set(this.products.map(p => p.category))];

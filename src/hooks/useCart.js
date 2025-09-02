@@ -22,23 +22,42 @@ export const useCart = () => {
     localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cartItems));
   }, [cartItems]);
 
-  const addToCart = (product) => {
+const addToCart = (product, customQuantity = 1) => {
     setCartItems(prevItems => {
-      const existingItem = prevItems.find(item => item.productId === product.Id);
+      // Create unique item key including variants
+      const itemKey = `${product.Id}-${product.selectedSize || 'default'}-${product.selectedColor || 'default'}`;
+      const existingItem = prevItems.find(item => 
+        item.productId === product.Id && 
+        item.selectedSize === product.selectedSize &&
+        item.selectedColor === product.selectedColor
+      );
       
       if (existingItem) {
         toast.success(`Updated ${product.title} quantity in cart!`);
         return prevItems.map(item =>
-          item.productId === product.Id
-            ? { ...item, quantity: item.quantity + 1 }
+          item.productId === product.Id && 
+          item.selectedSize === product.selectedSize &&
+          item.selectedColor === product.selectedColor
+            ? { ...item, quantity: item.quantity + customQuantity }
             : item
         );
       } else {
-        toast.success(`${product.title} added to cart!`);
+        const variantText = product.selectedSize || product.selectedColor 
+          ? ` (${[product.selectedSize, product.selectedColor].filter(Boolean).join(', ')})` 
+          : '';
+        toast.success(`${product.title}${variantText} added to cart!`);
         return [...prevItems, { 
-          productId: product.Id, 
-          quantity: 1, 
-          product 
+          productId: product.Id,
+          quantity: customQuantity,
+          selectedSize: product.selectedSize,
+          selectedColor: product.selectedColor,
+          product: {
+            ...product,
+            // Remove variant properties from stored product to avoid confusion
+            selectedSize: undefined,
+            selectedColor: undefined,
+            selectedQuantity: undefined
+          }
         }];
       }
     });
