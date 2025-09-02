@@ -11,32 +11,17 @@ function App() {
 <Routes>
             <Route path="/" element={
               <Layout>
-                {({ searchQuery, selectedCategory }) => (
-                  <Homepage 
-                    searchQuery={searchQuery} 
-                    selectedCategory={selectedCategory}
-                  />
-                )}
+                <Homepage />
               </Layout>
             } />
             <Route path="/products" element={
               <Layout>
-                {({ searchQuery, selectedCategory }) => (
-                  <Homepage 
-                    searchQuery={searchQuery} 
-                    selectedCategory={selectedCategory}
-                  />
-                )}
+                <Homepage />
               </Layout>
             } />
             <Route path="/categories" element={
               <Layout>
-                {({ searchQuery, selectedCategory }) => (
-                  <Homepage 
-                    searchQuery={searchQuery} 
-                    selectedCategory={selectedCategory}
-                  />
-                )}
+                <Homepage />
               </Layout>
             } />
           </Routes>

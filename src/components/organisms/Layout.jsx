@@ -1,5 +1,5 @@
 import { useCart } from "@/hooks/useCart";
-import React from "react";
+import React, { useState } from "react";
 import Header from "@/components/organisms/Header";
 import CartDrawer from "@/components/organisms/CartDrawer";
 
@@ -16,9 +16,12 @@ const Layout = ({ children }) => {
     closeCart
   } = useCart();
 
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("");
+
   const handleSearch = (query) => {
+    setSearchQuery(query);
     console.log("Searching for:", query);
-    // Placeholder for search functionality
   };
 
   return (
@@ -28,10 +31,14 @@ const Layout = ({ children }) => {
         onCartClick={openCart}
         onSearch={handleSearch}
       />
-<main className="flex-1">
-        {children}
+      <main className="flex-1">
+        {React.cloneElement(children, { 
+          searchQuery, 
+          selectedCategory,
+          onAddToCart: addToCart 
+        })}
       </main>
-
+      
       <CartDrawer
         isOpen={isCartOpen}
         onClose={closeCart}
