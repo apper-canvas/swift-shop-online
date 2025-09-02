@@ -1,6 +1,6 @@
+import React from "react";
 import { Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import React from "react";
 import "@/index.css";
 import Layout from "@/components/organisms/Layout";
 import ProductDetail from "@/components/pages/ProductDetail";

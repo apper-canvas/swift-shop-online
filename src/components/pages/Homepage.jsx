@@ -1,7 +1,8 @@
 import { useCart } from "@/hooks/useCart";
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import ProductGrid from "@/components/organisms/ProductGrid";
 import FilterBar from "@/components/molecules/FilterBar";
+import Error from "@/components/ui/Error";
 
 const Homepage = () => {
   const { addToCart } = useCart();
@@ -64,10 +65,10 @@ const Homepage = () => {
               View Categories
             </button>
           </div>
-        </div>
+</div>
       </section>
 
-{/* Filter Bar */}
+      {/* Filter Bar */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <FilterBar
           sortBy={sortBy}
