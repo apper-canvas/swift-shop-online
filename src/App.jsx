@@ -1,34 +1,21 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+import React from "react";
+import "@/index.css";
 import Layout from "@/components/organisms/Layout";
-import Homepage from "@/components/pages/Homepage";
 import ProductDetail from "@/components/pages/ProductDetail";
+import Homepage from "@/components/pages/Homepage";
+
 function App() {
   return (
     <Router>
       <div className="min-h-screen bg-background">
         <Layout>
-<Routes>
-            <Route path="/" element={
-              <Layout>
-                <Homepage />
-              </Layout>
-            } />
-            <Route path="/products" element={
-              <Layout>
-                <Homepage />
-              </Layout>
-            } />
-            <Route path="/products/:id" element={
-              <Layout>
-                <ProductDetail />
-              </Layout>
-            } />
-            <Route path="/categories" element={
-              <Layout>
-                <Homepage />
-              </Layout>
-            } />
+          <Routes>
+            <Route path="/" element={<Homepage />} />
+            <Route path="/products" element={<Homepage />} />
+            <Route path="/products/:id" element={<ProductDetail />} />
+            <Route path="/categories" element={<Homepage />} />
           </Routes>
         </Layout>
         <ToastContainer
