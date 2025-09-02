@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import React from "react";
 import "@/index.css";
@@ -8,31 +8,29 @@ import Homepage from "@/components/pages/Homepage";
 
 function App() {
   return (
-    <Router>
-      <div className="min-h-screen bg-background">
-        <Layout>
-          <Routes>
-            <Route path="/" element={<Homepage />} />
-            <Route path="/products" element={<Homepage />} />
-            <Route path="/products/:id" element={<ProductDetail />} />
-            <Route path="/categories" element={<Homepage />} />
-          </Routes>
-        </Layout>
-        <ToastContainer
-          position="top-right"
-          autoClose={3000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="light"
-          style={{ zIndex: 9999 }}
-        />
-      </div>
-    </Router>
+<div className="min-h-screen bg-background">
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/products" element={<Homepage />} />
+          <Route path="/products/:id" element={<ProductDetail />} />
+          <Route path="/categories" element={<Homepage />} />
+        </Routes>
+      </Layout>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        style={{ zIndex: 9999 }}
+      />
+    </div>
   );
 }
 
